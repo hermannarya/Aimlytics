@@ -1,9 +1,5 @@
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Aimlytics</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Aimlytics – Laser-Run-Schießtraining mit dem iPhone, live ausgewertet. Aim. Analyze. Improve.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
 <style>
@@ -14,7 +10,7 @@
   --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --num:"Barlow Condensed","Arial Narrow",sans-serif;
   color-scheme:dark;
 }
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6}
 .in{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(9,5,27,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
@@ -64,6 +60,51 @@ h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);line-height:1.1;mar
 .final{text-align:center;align-items:center}
 footer .in{padding-block:28px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
 footer a{color:var(--muted)}
+
+.showcase{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+@media (max-width:860px){.showcase{grid-template-columns:1fr;gap:36px}}
+.phone{background:#000;border-radius:34px;padding:9px;box-shadow:0 0 0 2px #2a1d46,0 24px 70px rgba(0,0,0,.55);aspect-ratio:600/1305;width:230px;max-width:100%;position:relative;overflow:hidden}
+.phone img,.phone video{display:block;width:100%;height:100%;object-fit:cover;border-radius:26px;background:#09051B}
+.phone.big{width:280px}
+.live{display:flex;flex-direction:column;align-items:center;gap:14px}
+.cap{margin:0;font-size:13.5px;color:var(--muted);text-align:center;max-width:40ch;display:flex;gap:8px;align-items:center}
+.rec{width:9px;height:9px;border-radius:50%;background:#FF4D5E;flex:0 0 auto;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.carousel{min-width:0;display:flex;flex-direction:column;gap:18px}
+.track{position:relative;display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:8px calc(50% - 115px) 6px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track::-webkit-scrollbar{display:none}
+.slide{margin:0;flex:0 0 auto;scroll-snap-align:center;display:flex;flex-direction:column;gap:12px;width:230px;transition:opacity .3s,transform .3s;opacity:.55;transform:scale(.96)}
+.slide.on{opacity:1;transform:none}
+.slide figcaption{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.slide figcaption b{color:var(--fg);font-family:var(--display);font-size:16px}
+.cnav{display:flex;align-items:center;justify-content:center;gap:14px}
+.arrow{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);font-size:22px;line-height:1;cursor:pointer}
+.cdots{display:flex;gap:7px}
+.cdot{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:var(--line);cursor:pointer;transition:width .3s,background .3s}
+.cdot.on{width:24px;background:var(--accent)}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:760px){.counters{grid-template-columns:repeat(2,1fr)}}
+.counters div{display:flex;flex-direction:column;gap:4px;border-top:2px solid var(--line);padding-top:14px}
+.counters b{font-family:var(--num);font-size:56px;line-height:1;font-weight:700;background:linear-gradient(90deg,#B98AFF,#E947A8);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.counters span{color:var(--muted);font-size:14.5px}
+.ptabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:4px}
+.ptabs span{font-size:13px;padding:6px 12px;border-radius:99px;color:var(--muted);transition:background .3s,color .3s;white-space:nowrap}
+.ptabs span.on{background:var(--accent);color:#fff}
+.sharegrid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+@media (max-width:860px){.sharegrid{grid-template-columns:1fr;gap:40px;justify-items:center}}
+.steps2{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:st}
+.steps2 li{display:flex;gap:12px;align-items:baseline;color:var(--muted);font-size:15px}
+.steps2 li b{color:var(--fg)}
+.steps2 li::before{counter-increment:st;content:counter(st);flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--fg);font-size:13px;display:grid;place-items:center;transform:translateY(-2px)}
+.fan{position:relative;width:min(100%,520px);height:450px;margin:0 auto}
+.fan .card{position:absolute;left:50%;top:10px;width:236px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#09051B;cursor:pointer;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s}
+.fan .card img,.fan .card video{display:block;width:100%;height:100%;object-fit:cover}
+.fan .card .tag{position:absolute;right:10px;top:10px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;background:rgba(9,5,27,.75);color:#F8F7FF;padding:4px 9px;border-radius:99px}
+@media (max-width:520px){.fan{height:360px}.fan .card{width:180px}}
+#share{overflow-x:clip}
+.sharecol{display:flex;flex-direction:column;gap:28px;min-width:0;width:100%}
+section.alt2{background:radial-gradient(70% 90% at 50% 100%,#3A1670 0%,rgba(22,13,48,0) 70%),var(--bg2)}
+@media (prefers-reduced-motion:reduce){.rec{animation:none}.track{scroll-behavior:auto}}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* Story-Karten: feste Bildwelt (werden als Bild exportiert), daher bewusst ein Look */
 .story{width:270px;aspect-ratio:9/16;max-width:100%;border-radius:18px;overflow:hidden;position:relative;color:#F8F7FF;
@@ -103,8 +144,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 
 .story .foot{z-index:1}
 </style>
-</head>
-<body>
 
 <header class="bar"><div class="in">
   <div class="brand"><img alt="" src="data:image/jpeg;base64,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">Aimlytics</div>
@@ -306,7 +345,86 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
       </div></div>
 </div></section>
 
-<section class="blk alt" id="beta"><div class="in final">
+<section class="blk alt" id="app"><div class="in">
+  <span class="eyebrow"><span data-de="Die App" data-en="The app">Die App</span></span>
+  <h2><span data-de="So sieht dein Training aus" data-en="This is what your training looks like">So sieht dein Training aus</span></h2>
+  <div class="showcase">
+    <div class="live">
+      <div class="phone big"><video id="livevid" autoplay muted loop playsinline preload="metadata" data-src-de="media/series.mp4" data-src-en="media/series-en.mp4" src="media/series.mp4"></video></div>
+      <div class="ptabs" id="ptabs" aria-hidden="true"><span data-de="Zielscheibe" data-en="Target">Zielscheibe</span><span data-de="Letzte Serien" data-en="Recent series">Letzte Serien</span><span data-de="Puls" data-en="Heart rate">Puls</span></div>
+      <p class="cap"><span class="rec"></span><span data-de="Echte Bildschirmaufnahme: eine Serie, 5 Treffer in 13,9 s" data-en="Real screen recording: one series, 5 hits in 13.9 s">Echte Bildschirmaufnahme: eine Serie, 5 Treffer in 13,9 s</span></p>
+    </div>
+    <div class="carousel" aria-roledescription="carousel">
+      <div class="track" id="track">
+        <figure class="slide" data-i="0">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-20-target.jpg" data-src-en="media/en/en-20-target.jpg" src="media/de/de-20-target.jpg" alt="Zielscheibe live" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Zielscheibe live" data-en="Live target">Zielscheibe live</span></b><span data-de="Jeder Laserpunkt landet sofort auf der Scheibe, grün oder rot." data-en="Every laser dot lands on the target right away, green or red.">Jeder Laserpunkt landet sofort auf der Scheibe, grün oder rot.</span></figcaption>
+        </figure>
+        <figure class="slide" data-i="1">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-22-recent.jpg" data-src-en="media/en/en-22-recent.jpg" src="media/de/de-22-recent.jpg" alt="Letzte Serien" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Letzte Serien" data-en="Recent series">Letzte Serien</span></b><span data-de="Zeit und Treffer jeder Serie, ohne das Training zu verlassen." data-en="Time and hits of every series without leaving the training.">Zeit und Treffer jeder Serie, ohne das Training zu verlassen.</span></figcaption>
+        </figure>
+        <figure class="slide" data-i="2">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-21-hr.jpg" data-src-en="media/en/en-21-hr.jpg" src="media/de/de-21-hr.jpg" alt="Puls" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Puls im Blick" data-en="Heart rate">Puls im Blick</span></b><span data-de="Puls von der Uhr, mit Kurve vom Lauf bis an den Schießstand." data-en="Heart rate from your watch, with the curve from the run to the range.">Puls von der Uhr, mit Kurve vom Lauf bis an den Schießstand.</span></figcaption>
+        </figure>
+        <figure class="slide" data-i="3">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-05-shot-pattern.jpg" data-src-en="media/en/en-05-shot-pattern.jpg" src="media/de/de-05-shot-pattern.jpg" alt="Trefferbild in mm" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Trefferbild in mm" data-en="Shot pattern in mm">Trefferbild in mm</span></b><span data-de="Jeder Laserpunkt, Streuung und mittlerer Treffpunkt." data-en="Every laser dot, spread and mean point of impact.">Jeder Laserpunkt, Streuung und mittlerer Treffpunkt.</span></figcaption>
+        </figure>
+        <figure class="slide" data-i="4">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-04-history.jpg" data-src-en="media/en/en-04-history.jpg" src="media/de/de-04-history.jpg" alt="Historie" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Historie" data-en="History">Historie</span></b><span data-de="Alle Trainings nach Tagen, mit Summen." data-en="All trainings by day, with totals.">Alle Trainings nach Tagen, mit Summen.</span></figcaption>
+        </figure>
+        <figure class="slide" data-i="5">
+          <div class="phone"><img loading="lazy" data-src-de="media/de/de-06-day.jpg" data-src-en="media/en/en-06-day.jpg" src="media/de/de-06-day.jpg" alt="Trainingstag" width="600" height="1305"></div>
+          <figcaption><b><span data-de="Trainingstag" data-en="Training day">Trainingstag</span></b><span data-de="Unter Puls und ohne Puls im Vergleich." data-en="Under load versus at rest.">Unter Puls und ohne Puls im Vergleich.</span></figcaption>
+        </figure>
+      </div>
+      <div class="cnav">
+        <button class="arrow" id="prev" aria-label="zurück">‹</button>
+        <div class="cdots"><button class="cdot" aria-label="1" data-i="0"></button><button class="cdot" aria-label="2" data-i="1"></button><button class="cdot" aria-label="3" data-i="2"></button><button class="cdot" aria-label="4" data-i="3"></button><button class="cdot" aria-label="5" data-i="4"></button><button class="cdot" aria-label="6" data-i="5"></button></div>
+        <button class="arrow" id="next" aria-label="weiter">›</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk" id="share"><div class="in">
+  <span class="eyebrow"><span data-de="Teilen" data-en="Sharing">Teilen</span></span>
+  <h2><span data-de="Dein Training als Status, mit einem Tipp" data-en="Your training as a status, in one tap">Dein Training als Status, mit einem Tipp</span></h2>
+  <div class="sharegrid">
+    <div class="live">
+      <div class="phone big"><video id="sharevid" autoplay muted loop playsinline preload="metadata" data-src-de="media/share-flow.mp4" data-src-en="media/share-flow-en.mp4" src="media/share-flow.mp4"></video></div>
+      <p class="cap"><span class="rec"></span><span data-de="Echte Bildschirmaufnahme aus der App" data-en="Real screen recording from the app">Echte Bildschirmaufnahme aus der App</span></p>
+    </div>
+    <div class="sharecol">
+      <ol class="steps2">
+        <li><span><b data-de="Training öffnen" data-en="Open a training">Training öffnen</b> <span data-de="in der Historie oder direkt nach dem Beenden." data-en="in History or right after you finish.">in der Historie oder direkt nach dem Beenden.</span></span></li>
+        <li><span><b data-de="Als Status teilen" data-en="Share as status">Als Status teilen</b> <span data-de="baut Ergebnis, Trefferbild, einen Clip deiner besten Serie und deinen 4-Wochen-Trend." data-en="builds your result, shot pattern, a clip of your best series and your 4-week trend.">baut Ergebnis, Trefferbild, einen Clip deiner besten Serie und deinen 4-Wochen-Trend.</span></span></li>
+        <li><span><b data-de="An Coach senden" data-en="Send to coach">An Coach senden</b> <span data-de="schickt zusätzlich die Daten als Datei, in Millimetern." data-en="also sends the data as a file, in millimetres.">schickt zusätzlich die Daten als Datei, in Millimetern.</span></span></li>
+      </ol>
+      <div class="fan" id="fan">
+        <div class="card"><img loading="lazy" data-src-de="media/de/status-1.jpg" data-src-en="media/en/status-1.jpg" src="media/de/status-1.jpg" alt="Status: Ergebnis"></div>
+        <div class="card"><img loading="lazy" data-src-de="media/de/status-2.jpg" data-src-en="media/en/status-2.jpg" src="media/de/status-2.jpg" alt="Status: Trefferbild"></div>
+        <div class="card"><video muted playsinline preload="metadata" data-src-de="media/status-clip.mp4" data-src-en="media/status-clip-en.mp4" src="media/status-clip.mp4"></video><span class="tag" data-de="Clip" data-en="Clip">Clip</span></div>
+        <div class="card"><img loading="lazy" data-src-de="media/de/status-4.jpg" data-src-en="media/en/status-4.jpg" src="media/de/status-4.jpg" alt="Status: 4 Wochen"></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk alt" id="stats"><div class="in">
+  <span class="eyebrow"><span data-de="In Zahlen" data-en="By the numbers">In Zahlen</span></span>
+  <div class="counters">
+    <div><b class="count" data-to="5" data-dec="0">0</b><span><span data-de="LEDs, live ausgewertet" data-en="LEDs read live">LEDs, live ausgewertet</span></span></div>
+    <div><b class="count" data-to="29.6" data-dec="1">0</b><span><span data-de="mm Zielkreis, jeder Schuss vermessen" data-en="mm aim circle, every shot measured">mm Zielkreis, jeder Schuss vermessen</span></span></div>
+    <div><b class="count" data-to="50" data-dec="0">0</b><span><span data-de="Sekunden Limit, wie im Wettkampf" data-en="second limit, just like competition">Sekunden Limit, wie im Wettkampf</span></span></div>
+    <div><b class="count" data-to="100" data-dec="0" data-suffix=" %">0</b><span><span data-de="deiner Daten bleiben auf dem iPhone, ohne Konto und Cloud" data-en="of your data stays on your iPhone, no account, no cloud">deiner Daten bleiben auf dem iPhone, ohne Konto und Cloud</span></span></div>
+  </div>
+</div></section>
+
+<section class="blk alt2" id="beta"><div class="in final">
   <h2><span data-de="Teste Aimlytics als einer der Ersten" data-en="Be one of the first to try Aimlytics">Teste Aimlytics als einer der Ersten</span></h2>
   <p class="lead" style="margin:0;max-width:46ch"><span data-de="Die Beta läuft über Apples TestFlight. Einfach anmelden, App installieren und mit dem nächsten Training loslegen." data-en="The beta runs on Apple's TestFlight. Sign up, install the app and start with your next training.">Die Beta läuft über Apples TestFlight. Einfach anmelden, App installieren und mit dem nächsten Training loslegen.</span></p>
   <a class="btn" href="#beta" aria-disabled="true"><span data-de="Beta testen" data-en="Join the beta">Beta testen</span> →</a>
@@ -356,16 +474,66 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 </script>
 <script>
 (function(){
+  var track=document.getElementById('track'); if(!track) return;
+  var slides=[].slice.call(track.querySelectorAll('.slide')), dots=[].slice.call(document.querySelectorAll('.cdot'));
+  var cur=0, timer=null, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mark(i){cur=i;slides.forEach(function(s,k){s.classList.toggle('on',k===i)});dots.forEach(function(d,k){d.classList.toggle('on',k===i)})}
+  function pos(s){return s.offsetLeft+s.offsetWidth/2-track.clientWidth/2}
+  function go(i){i=(i+slides.length)%slides.length;track.scrollTo({left:pos(slides[i])});mark(i)}
+  function nearest(){var x=track.scrollLeft,b=0,bd=1e9;slides.forEach(function(s,k){var d=Math.abs(pos(s)-x);if(d<bd){bd=d;b=k}});return b}
+  slides.forEach(function(s,k){s.addEventListener('click',function(){if(k!==cur){stop();go(k)}})});
+  var st;track.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){mark(nearest())},80)});
+  document.getElementById('prev').onclick=function(){stop();go(cur-1)};document.getElementById('next').onclick=function(){stop();go(cur+1)};
+  dots.forEach(function(d){d.onclick=function(){stop();go(+d.dataset.i)}});
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  track.addEventListener('pointerdown',stop);
+  mark(0); if(!reduce) timer=setInterval(function(){go(cur+1)},3500);
+  // Zaehler beim Einblenden
+  var counted=false, box=document.getElementById('stats');
+  function count(){ if(counted) return; counted=true;
+    document.querySelectorAll('.count').forEach(function(el){var to=+el.dataset.to,dec=+el.dataset.dec,suf=el.dataset.suffix||'',t0=null;
+      function fmt(v){var s=v.toFixed(dec);return (document.documentElement.lang==='de'?s.replace('.',','):s)+suf}
+      if(reduce){el.textContent=fmt(to);return}
+      function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1200);el.textContent=fmt(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step)})}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){if(e[0].isIntersecting)count()},{threshold:.4}).observe(box)}else count();
+  document.querySelectorAll('.count').forEach(function(el){var dec=+el.dataset.dec;el.textContent=(+el.dataset.to).toFixed(dec).replace('.',',')+(el.dataset.suffix||'')});
+  counted=false;
+  // Sprache: Bilder und Video umschalten
+  window.mediaLang=function(en){
+    document.querySelectorAll('[data-src-de]').forEach(function(el){var s=en?el.dataset.srcEn:el.dataset.srcDe;if(el.getAttribute('src')!==s){el.setAttribute('src',s);if(el.tagName==='VIDEO'){el.load();if(el.autoplay)el.play().catch(function(){})}}});
+    document.querySelectorAll('.count').forEach(function(el){var dec=+el.dataset.dec,v=(+el.dataset.to).toFixed(dec);el.textContent=(en?v:v.replace('.',','))+(el.dataset.suffix||'')});
+  };
+})();
+</script>
+<script>
+(function(){
   function set(en){
     document.querySelectorAll('[data-en]').forEach(function(el){el.textContent=en?el.dataset.en:el.dataset.de});
     document.documentElement.lang=en?'en':'de';
     document.getElementById('l-de').setAttribute('aria-pressed',!en);document.getElementById('l-en').setAttribute('aria-pressed',en);
-    if(window.storyLang) window.storyLang(en);
+    if(window.storyLang) window.storyLang(en); if(window.mediaLang) window.mediaLang(en);
   }
   document.getElementById('l-de').onclick=function(){set(false)};document.getElementById('l-en').onclick=function(){set(true)};
   var nav=(navigator.language||'de').toLowerCase(); if(nav.indexOf('de')!==0) set(true);
   document.querySelectorAll('a[aria-disabled="true"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})});
 })();
 </script>
-</body>
-</html>
+<script>
+(function(){
+  var v=document.getElementById('livevid'),tabs=[].slice.call(document.querySelectorAll('#ptabs span'));
+  function panel(t){return t<6.5?0:t<11.6?1:t<16.6?2:0}
+  function upd(){var k=panel(v.currentTime||0);tabs.forEach(function(s,i){s.classList.toggle('on',i===k)})}
+  if(v){v.addEventListener('timeupdate',upd);upd()}
+  var fan=document.getElementById('fan'); if(!fan) return;
+  var cards=[].slice.call(fan.querySelectorAll('.card')),front=0,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,ft=null,n=cards.length;
+  var pose=[[0,0,1,4,1],[-46,-8,.88,3,1],[46,8,.88,2,1],[0,0,.8,1,0]];
+  function next(){front=(front+1)%n;lay()}
+  function lay(){clearTimeout(ft);cards.forEach(function(c,i){var k=(i-front+n)%n,p=pose[k];
+    c.style.transform='translateX(calc(-50% + '+p[0]+'%)) rotate('+p[1]+'deg) scale('+p[2]+')';c.style.zIndex=p[3];c.style.opacity=p[4];
+    var vid=c.querySelector('video');if(vid){vid.onended=null;if(k===0){vid.currentTime=0;vid.play().catch(function(){});if(!reduce) vid.onended=next}else vid.pause()}});
+    if(!reduce && !cards[front].querySelector('video')) ft=setTimeout(next,3200)}
+  cards.forEach(function(c,i){c.addEventListener('click',function(){front=(i===front)?(i+1)%n:i;lay()})});
+  lay();
+})();
+</script>
