@@ -1,1 +1,1 @@
-Aimlytics – Datenschutzerklärung / privacy policy: https://hermannarya.github.io/aimlytics/privacy.html
+Aimlytics – Datenschutzerklärung / privacy policy: https://hermannarya.github.io/Aimlytics/privacy.html
